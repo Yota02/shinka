@@ -48,8 +48,8 @@ const TreeEditor = forwardRef(function TreeEditor(
 
     const isVertical = orientation === 'vertical';
     const margin = isVertical
-      ? { top: 60, right: 60, bottom: 120, left: 60 }
-      : { top: 60, right: 120, bottom: 60, left: 60 };
+      ? { top: 50, right: 60, bottom: 80, left: 60 }
+      : { top: 50, right: 190, bottom: 50, left: 60 };
     const innerW = Math.max(width - margin.left - margin.right, 200);
     const innerH = Math.max(height - margin.top - margin.bottom, 200);
 
@@ -71,7 +71,9 @@ const TreeEditor = forwardRef(function TreeEditor(
     const root = d3.hierarchy(tree);
     root.sum(() => 1);
 
-    const treeLayout = d3.tree().size([innerH, innerW]);
+    const treeLayout = isVertical
+      ? d3.tree().size([innerW, innerH])
+      : d3.tree().size([innerH, innerW]);
     treeLayout(root);
 
     const scaleV = (v) => v * (branchLength || 1);
@@ -87,6 +89,10 @@ const TreeEditor = forwardRef(function TreeEditor(
       const b = [sx(d.target), sy(d.target)];
       if (branchStyle === 'diagonal') {
         return `M${a[0]},${a[1]} L${b[0]},${b[1]}`;
+      }
+      if (isVertical) {
+        const midY = (a[1] + b[1]) / 2;
+        return `M${a[0]},${a[1]} L${a[0]},${midY} L${b[0]},${midY} L${b[0]},${b[1]}`;
       }
       const midX = (a[0] + b[0]) / 2;
       return `M${a[0]},${a[1]} L${midX},${a[1]} L${midX},${b[1]} L${b[0]},${b[1]}`;
@@ -122,6 +128,7 @@ const TreeEditor = forwardRef(function TreeEditor(
       .attr('r', (d) => (!d.children || d.children.length === 0 ? 6 : 8))
       .attr('fill', (d) => {
         if (d.data.id === selectedNodeId) return '#e67e22';
+        if (d.data.color) return d.data.color;
         return !d.children || d.children.length === 0 ? '#3498db' : '#27ae60';
       })
       .attr('stroke', '#fff')
@@ -130,8 +137,8 @@ const TreeEditor = forwardRef(function TreeEditor(
     nodeG
       .filter((d) => !d.children || d.children.length === 0)
       .append('text')
-      .attr('x', isVertical ? 0 : 12)
-      .attr('y', isVertical ? 16 : 5)
+      .attr('x', isVertical ? 0 : 30)
+      .attr('y', isVertical ? 34 : 5)
       .attr('text-anchor', isVertical ? 'middle' : 'start')
       .attr('font-size', '13px')
       .attr('fill', (d) => (d.data.id === selectedNodeId ? '#e67e22' : '#2c3e50'))

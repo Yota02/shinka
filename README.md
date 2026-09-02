@@ -2,19 +2,39 @@
 
 Éditeur d'arbres phylogénétiques pour la biologie.
 
+![Aperçu de Shinka](assets/screenshot-overview.png)
+
 ## Description
 
 **Shinka** (進化, "évolution" en japonais) est une application Electron/React permettant de créer, éditer et visualiser des arbres phylogénétiques. Outil conçu pour les biologistes, étudiants et chercheurs en systématique.
 
+## Captures d'écran
+
+### Vue générale de l'éditeur
+Interface principale avec barre d'outils complète, visualisation D3.js en temps réel, panneau latéral d'inspection et aperçu Newick instantané.
+
+![Vue générale de l'éditeur](assets/screenshot-overview.png)
+
+### Édition d'un taxon et métadonnées
+Sélection interactive d'un nœud ou d'une feuille pour personnaliser le nom de l'espèce ou du clade, assigner une couleur thématique, ajouter des annotations scientifiques et manipuler la descendance.
+
+![Édition d'un taxon](assets/screenshot-node-editor.png)
+
+### Styles de branches et orientations
+
+| Branches en diagonales | Orientation verticale |
+| :---: | :---: |
+| ![Branches diagonales](assets/screenshot-diagonal.png) | ![Orientation verticale](assets/screenshot-vertical.png) |
+
 ## Fonctionnalités
 
 - **Éditeur interactif** — Créez et modifiez votre arbre en direct
-- **Nœuds editables** — Renommez les taxons, modifiez les branches
-- **Styles de branches** — Rectangulaire ou diagonale
+- **Nœuds éditables** — Renommez les taxons, modifiez les branches, attribuez des couleurs et annotations
+- **Styles de branches** — Rectangulaire (équerres) ou diagonale
 - **Orientation** — Horizontale ou verticale
 - **Export multi-formats** — PNG, SVG, Newick
 - **Zoom & navigation** — Zoom avant/arrière, recentrage
-- **Statistiques** — Nombre de nœuds et feuilles en temps réel
+- **Statistiques** — Nombre de nœuds et feuilles calculé en temps réel
 
 ## Installation
 

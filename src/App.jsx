@@ -203,11 +203,13 @@ function createDemoTree() {
   const human = createNode('Homo sapiens');
   const dog = createNode('Canis lupus');
   const sparrow = createNode('Passer domesticus');
+  const crow = createNode('Corvus corax');
   human.children = [];
   dog.children = [];
   sparrow.children = [];
+  crow.children = [];
   mammal.children = [human, dog];
-  bird.children = [sparrow];
+  bird.children = [sparrow, crow];
   root.children = [mammal, bird];
   return root;
 }
