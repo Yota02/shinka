@@ -1,0 +1,58 @@
+{
+  "name": "shinka",
+  "version": "1.0.0",
+  "description": "Éditeur d'arbres phylogénétiques pour la biologie",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "webpack --mode development && electron . --no-sandbox",
+    "build": "webpack --mode production",
+    "dist": "npm run build && electron-builder --linux deb"
+  },
+  "author": {
+    "name": "Alexis",
+    "email": "alexis@local.dev"
+  },
+  "homepage": "https://local.dev/shinka",
+  "license": "MIT",
+  "build": {
+    "appId": "com.alexis.shinka",
+    "productName": "Shinka",
+    "files": [
+      "electron/**/*",
+      "dist/**/*",
+      "assets/**/*"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "linux": {
+      "target": [
+        "deb"
+      ],
+      "category": "Education",
+      "icon": "assets/icon.png"
+    }
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "@babel/preset-react": "^7.24.0",
+    "babel-loader": "^9.1.0",
+    "css-loader": "^7.1.0",
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.6.0",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.90.0",
+    "webpack-cli": "^5.1.0",
+    "webpack-dev-server": "^5.0.0"
+  },
+  "dependencies": {
+    "d3": "^7.9.0",
+    "html-to-image": "^1.11.11",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0"
+  }
+}
